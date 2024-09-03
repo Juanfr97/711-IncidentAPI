@@ -3,6 +3,7 @@ import { envs } from './config/envs';
 import { MongoDatabase } from './data/init';
 import { IncidentModel } from './data/models/incident.model';
 import { AppRoutes } from './presentation/routes';
+import { emailJob } from './domain/jobs/email.job';
 
 const app = express();
 app.use(express.json());
@@ -17,4 +18,5 @@ app.use(AppRoutes.routes);
 
 app.listen(envs.PORT,()=>{
     console.log("Server is running on port 3000");
+    emailJob();
 });
